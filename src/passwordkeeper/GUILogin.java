@@ -533,7 +533,7 @@ public class GUILogin extends javax.swing.JFrame {
             String padPassword = new String(passwordPadField.getPassword());
       
          try {
-             encryptManager = new EncryptorManager(passwordString+padPassword);
+             encryptManager = new EncryptorManager(passwordString+padPassword, pseudoField.getText()+".pw");
              Account acc = new Account("", pseudoField.getText(), passwordString+padPassword, null, 0);
              ArrayList<Account> accs = new ArrayList<>();
              accs.add(acc);
@@ -621,7 +621,7 @@ public class GUILogin extends javax.swing.JFrame {
 
         
             try {
-                encryptManager = new EncryptorManager(password+padPassword);
+                encryptManager = new EncryptorManager(password+padPassword, pseudoField.getText()+".pw");
                 ArrayList<Account> accs = encryptManager.decryptAccounts();
                 System.out.print(accs);
             } catch (FileNotFoundException ex) {
@@ -634,7 +634,7 @@ public class GUILogin extends javax.swing.JFrame {
                 errorTextArea.setText("Wrong Block size");
              return;
          } catch (BadPaddingException ex) {
-             
+                System.out.println(ex.getMessage());
                 errorTextArea.setText("Wrong padding");
              return;
          } catch (NoSuchAlgorithmException ex) {
@@ -654,41 +654,6 @@ public class GUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_acceptButtonActionPerformed
 
     private void acceptedLogin(){
-        
-        
-         try {
-             File f = new File("t.tt");
-             f.createNewFile();
-             EncryptorManager manager = new EncryptorManager("test");
-             Account c = new Account("ss", "sss", "ssss", null, 0);
-             ArrayList<Account> acc = new ArrayList<>();
-             acc.add(c);
-             manager.encryptAccounts(acc);
-             
-             File fi = new File("t.tt");
-             ArrayList<Account> d = null;
-             d = manager.decryptAccounts();
-
-             System.out.println(d);
-         }
-         catch (NoSuchAlgorithmException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (NoSuchPaddingException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (InvalidKeyException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (InvalidAlgorithmParameterException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (FileNotFoundException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (IOException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (IllegalBlockSizeException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (BadPaddingException ex) {
-             Logger.getLogger(GUILogin.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        
             new AccountGUI();
             this.setVisible(false);
             this.revalidate();
