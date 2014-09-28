@@ -1,4 +1,4 @@
-package all;
+package passwordkeeper;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ public class AccountManager {
 
 	private ArrayList<Account> accounts = null;
 	private EncryptorManager encryptManager = null;
-	
+
 	public AccountManager() {
 		accounts = new ArrayList<>();
 

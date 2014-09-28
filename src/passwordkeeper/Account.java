@@ -1,18 +1,6 @@
-package all;
+package passwordkeeper;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Field;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
 
 public class Account {
 
@@ -45,7 +33,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Ps=" + pseudo + "\n" + "Pw=" + password + "\n"
-				+ "Em=" + email;
+		return    "Ps=" + pseudo + "\n"
+                        + "Pw=" + password + "\n"
+			+ "Em=" + email + "\n";
 	}
 }
